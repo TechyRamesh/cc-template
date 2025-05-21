@@ -24,13 +24,26 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     cd your-repo
     ```
 
-2. **Install Dependencies**:
+2. **Change package name**:
+   Since this is template not a project. So you may need to change the package name of this project.
+
+   Run this command to make shell script executable:
+    ```bash
+    chmod +x package_name_change.sh
+    ```
+
+   To change the package name, use this command and replace package name with your new package name (write.new.package.name):
+    ```bash
+    ./package_name_change.sh pacakgeName
+    ```
+
+3. **Install Dependencies**:
    Run the following command to get all the dependencies required by the project:
     ```bash
     flutter pub get
     ```
 
-3. **Generate Code for JSON Serialization**:
+4. **Generate Code for JSON Serialization**:
    Since this project uses JSON serialization (via `json_serializable` package), you need to run the `build_runner` command to generate code for your models.
 
    Run this command to generate the necessary code:
@@ -43,7 +56,7 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     dart run build_runner watch
     ```
 
-4. **Remove Firebase (If Applicable)**:
+5. **Remove Firebase (If Applicable)**:
    Since this project uses firebase, if don't need it, you can remove it using following command.
 
    Run this command to make shell script executable:
@@ -56,7 +69,7 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     ./remove_firebase.sh
     ```
 
-5. **Run the App**:
+6. **Run the App**:
    To run the app on an emulator or connected device:
     ```bash
     flutter run
