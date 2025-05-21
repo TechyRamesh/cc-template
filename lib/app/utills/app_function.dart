@@ -13,7 +13,7 @@ import 'package:untitled/app/widgets/app_button.dart';
 import 'package:untitled/app/widgets/app_text.dart';
 import 'package:untitled/service/permission_service.dart';
 
-class AppFunction {
+mixin AppFunction {
   static Future<File?> selectImage() async {
     final source = await Get.dialog<ImageSource>(
       AlertDialog(

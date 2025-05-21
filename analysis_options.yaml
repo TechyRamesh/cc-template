@@ -53,5 +53,6 @@ analyzer:
     use_named_constants: error
     eol_at_end_of_file: error
     depend_on_referenced_packages: error
+    unnecessary_async: error
     no_runtimetype_tostring: false
     sort_pub_dependencies: false

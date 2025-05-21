@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColorConstant {
+mixin AppColorConstant {
   static const Color appTransparent = Color(0x00000000);
   static const Color appWhite = Color(0xffFFFFFF);
   static const Color appBlack = Color(0xFF000000);
@@ -27,13 +27,13 @@ class AppColorConstant {
     BoxShadow(
       offset: const Offset(0, -6),
       spreadRadius: 0.2,
-      color: appBlack.withOpacity(0.2),
+      color: appBlack.withValues(alpha: 0.2),
       blurRadius: 2,
     ),
   ];
   static List<BoxShadow> appBottomShadow = [
     BoxShadow(
-      color: AppColorConstant.appBlack.withOpacity(0.2),
+      color: AppColorConstant.appBlack.withValues(alpha: 0.2),
       spreadRadius: 8,
       blurRadius: 15,
       offset: const Offset(0, 8),

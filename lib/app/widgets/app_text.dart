@@ -51,7 +51,7 @@ class AppText extends StatelessWidget {
           fontFamily: fontFamily,
           overflow: overflow,
           decoration: decoration,
-          decorationColor: AppColorConstant.appGrey.withOpacity(0.5),
+          decorationColor: AppColorConstant.appGrey.withValues(alpha: 0.5),
           letterSpacing: letterSpacing,
         ),
       ),

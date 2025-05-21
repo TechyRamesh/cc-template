@@ -31,7 +31,7 @@ class OnBoardingScreenHelper {
     final Map<String, dynamic>? utillsData = await state.onboardingController?.utillsRepository.getUtillsData('onboarding');
     if (utillsData != null && utillsData.containsKey('onSliders')) {
       'utillsData --> $utillsData'.logs();
-      onboardingData = (utillsData['onSliders'] as List).map((e) => OnBoardingModel.fromJson(e)).toList();
+      onboardingData = (utillsData['onSliders'] as List).map((e) => OnBoardingModel.fromJson(e as Map<String, dynamic>)).toList();
     }
   }
 }

@@ -16,7 +16,7 @@ class SplashScreenHelper {
     'FirebaseAuth.instance.currentUser --> ${FirebaseAuth.instance.currentUser?.uid}'.infoLogs();
     Future.delayed(
       const Duration(seconds: 2),
-      () async {
+      () {
         if (FirebaseAuth.instance.currentUser?.uid != null) {
         } else {
           RouteHelper.instance.goToOnBoarding();

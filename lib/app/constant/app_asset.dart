@@ -1,6 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 
-class AppAsset {
+mixin AppAsset {
   static String? defaultFont = GoogleFonts.lato().fontFamily;
   static const String imagePath = 'assets/images/';
   static const String iconPath = 'assets/icons/';

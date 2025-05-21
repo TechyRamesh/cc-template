@@ -10,7 +10,7 @@ class AppLoader extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: AppColorConstant.appPurple.withOpacity(0.3)),
+      decoration: BoxDecoration(color: AppColorConstant.appPurple.withValues(alpha: 0.3)),
       child: const Center(child: SpinKitSpinningLines(color: AppColorConstant.appLightPurple)),
     );
   }

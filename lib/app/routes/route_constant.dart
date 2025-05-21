@@ -7,7 +7,7 @@ class RouteConstant {
   static const String onBoarding = '/onBoarding';
 }
 
-class GetPageRouteHelper {
+mixin GetPageRouteHelper {
   static List<GetPage> routes = [
     GetPage(name: RouteConstant.initial, page: () => const SplashScreen()),
     GetPage(name: RouteConstant.onBoarding, page: () => const OnboardingScreen()),
