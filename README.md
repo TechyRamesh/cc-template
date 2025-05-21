@@ -43,7 +43,20 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     dart run build_runner watch
     ```
 
-4. **Run the App**:
+4. **Remove Firebase (If Applicable)**:
+   Since this project uses firebase, if don't need it, you can remove it using following command.
+
+   Run this command to make shell script executable:
+    ```bash
+    chmod +x remove_firebase.sh
+    ```
+
+   To remove the firebase from project, use this command:
+    ```bash
+    ./remove_firebase.sh
+    ```
+
+5. **Run the App**:
    To run the app on an emulator or connected device:
     ```bash
     flutter run
