@@ -23,7 +23,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await init();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -42,7 +45,9 @@ class MyApp extends StatelessWidget {
               child: GetMaterialApp(
                 title: 'CC Event Management',
                 theme: ThemeData(
-                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                  colorScheme: ColorScheme.fromSeed(
+                    seedColor: Colors.deepPurple,
+                  ),
                   useMaterial3: true,
                 ),
                 debugShowCheckedModeBanner: false,
@@ -52,7 +57,9 @@ class MyApp extends StatelessWidget {
                 defaultTransition: Transition.fadeIn,
                 builder: (context, child) {
                   return MediaQuery(
-                    data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+                    data: MediaQuery.of(
+                      context,
+                    ).copyWith(textScaler: TextScaler.noScaling),
                     child: child ?? const SizedBox(),
                   );
                 },
@@ -63,7 +70,9 @@ class MyApp extends StatelessWidget {
               child: Container(
                 height: 120,
                 width: 30,
-                decoration: const BoxDecoration(color: AppColorConstant.appBlack),
+                decoration: const BoxDecoration(
+                  color: AppColorConstant.appBlack,
+                ),
                 child: const Center(
                   child: Padding(
                     padding: EdgeInsets.only(top: 3),

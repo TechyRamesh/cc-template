@@ -3,7 +3,8 @@ class AppCollectionConstants {
 }
 
 class AppConstants {
-  static const String profilePicture = 'https://firebasestorage.googleapis.com/v0/b/love-story-434917.firebasestorage.app/o/sign_up_unicorn.png?alt=media';
+  static const String profilePicture =
+      'https://firebasestorage.googleapis.com/v0/b/love-story-434917.firebasestorage.app/o/sign_up_unicorn.png?alt=media';
 }
 
 class StringConstant {
@@ -11,7 +12,8 @@ class StringConstant {
   static const String appName = 'Love Story Unicorn';
   static const String welcomeToLoveStory = 'welcome to love story';
   static const String aRealLoveStoryMarriage = 'a real love story marriage';
-  static const String onboardingFirst = 'a wholesome place to increase love in your life ';
+  static const String onboardingFirst =
+      'a wholesome place to increase love in your life ';
   static const String onboardingSecond = 'get your happily ever after';
   static const String createAccount = 'create an account';
   static const String welcomeBack = 'Welcome back';
@@ -38,12 +40,14 @@ class StringConstant {
   static const String number = 'number';
   static const String enterYourEmail = 'Email';
   static const String enterYourPassword = 'Password';
-  static const String passwordHint = 'password: 8+ chars, upper/lowercase & symbol';
+  static const String passwordHint =
+      'password: 8+ chars, upper/lowercase & symbol';
   static const String confirmEmail = 'Confirm email';
   static const String confirmPassword = 'Confirm password';
   static const String oneTimePassword = 'One Time Password';
   static const String confirmOneTimePassword = 'Confirm password';
-  static const String otpMessage = 'We have sent a one time password to your email to confirm it’s your email';
+  static const String otpMessage =
+      'We have sent a one time password to your email to confirm it’s your email';
   static const String emptyEmail = 'Please enter your email';
   static const String validEmail = 'Please enter a valid email';
   static const String validName = 'Please enter a valid name';
@@ -91,30 +95,40 @@ class StringConstant {
   static const String pickBreakers = 'Pick your deal breakers';
   static const String next = 'Next';
   static const String exitApp = 'Exit App';
-  static const String exitAppDescription = 'Are you sure you want to exit the app?';
-  static const String permissionDescription = 'Hey there! To make the magic happen, we need a bit of help from you. Granting access will allow app to work seamlessly and give you the best experience. We respect your privacy and promise to use your permissions responsibly no sneaky business, just pure awesomeness!';
-  static const String permissionSubDescription = 'If you change your mind, you can always enable this in Settings. Let’s make it happen!';
+  static const String exitAppDescription =
+      'Are you sure you want to exit the app?';
+  static const String permissionDescription =
+      'Hey there! To make the magic happen, we need a bit of help from you. Granting access will allow app to work seamlessly and give you the best experience. We respect your privacy and promise to use your permissions responsibly no sneaky business, just pure awesomeness!';
+  static const String permissionSubDescription =
+      'If you change your mind, you can always enable this in Settings. Let’s make it happen!';
   static const String notNow = 'Not Now';
   static const String goToSetting = 'Go to Settings';
   static const String subscription = 'Subscription';
-  static const String subscriptionDescription = "please enter the secret code to access the app and get a 3 month free trial";
+  static const String subscriptionDescription =
+      "please enter the secret code to access the app and get a 3 month free trial";
   static const String unknownTitle = 'Unknown Title';
   static const String priceZero = '\$0.00';
   static const String noDescription = 'No description available';
-  static const String pleaseSelectPlan = 'Please select a plan or wait for products to load';
-  static const String noPlanAvailable = 'We apologize for the inconvenience. Subscription plan is currently unavailable. Please check back later or explore other available options';
+  static const String pleaseSelectPlan =
+      'Please select a plan or wait for products to load';
+  static const String noPlanAvailable =
+      'We apologize for the inconvenience. Subscription plan is currently unavailable. Please check back later or explore other available options';
   static const String proceedToPayment = 'Proceed to Payment';
   static const String selectAnyOnePlan = 'Please select any one plan';
-  static const String fiveToThirtySecond = "5-30-second video saying I'm open to this crazy little thing called love or something else";
+  static const String fiveToThirtySecond =
+      "5-30-second video saying I'm open to this crazy little thing called love or something else";
   static const String potentialMatches = "potential match";
   static const String today = "Today";
   static const String yesterday = "Yesterday";
-  static const String startConversation = "Start a conversation now with each other";
+  static const String startConversation =
+      "Start a conversation now with each other";
   static const String itsAMatch = "It's a match, Jake!";
   static const String requiredValidation = "This question is mandatory";
-  static const String iHereby = "i hereby agree I am zoroastrian, single, and looking for love";
+  static const String iHereby =
+      "i hereby agree I am zoroastrian, single, and looking for love";
   static const String noMoreUsers = "No more users";
-  static const String noMoreUsersMessage = "no matches found with your current filters. to review your filters you can click the button above. Please click the preferences button below to complete your profile and be ready for your future potential matches";
+  static const String noMoreUsersMessage =
+      "no matches found with your current filters. to review your filters you can click the button above. Please click the preferences button below to complete your profile and be ready for your future potential matches";
   static const String cancel = "Cancel";
   static const String yes = "Yes";
   static const String no = "No";
@@ -124,8 +138,8 @@ class StringConstant {
   static const String partnerAge = "Partner Age";
   static const String passwordRequirements = "Password Requirements";
   static const String okText = "Ok";
-  static const String mandatoryPopup = "To increase your chances of finding a high quality partner please fill in these optional questions if they are important to you";
-
+  static const String mandatoryPopup =
+      "To increase your chances of finding a high quality partner please fill in these optional questions if they are important to you";
 
   ///
   static const String mandatoryQuestion = "mandatory questions";

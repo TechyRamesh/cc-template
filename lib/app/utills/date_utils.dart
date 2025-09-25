@@ -1,7 +1,10 @@
 import 'package:intl/intl.dart';
 
 mixin DateTimeUtils {
-  static String getFormattedDate(DateTime dateTime, {String dateFormat = 'dd MMM yyyy'}) {
+  static String getFormattedDate(
+    DateTime dateTime, {
+    String dateFormat = 'dd MMM yyyy',
+  }) {
     final DateFormat formatter = DateFormat(dateFormat);
     return formatter.format(dateTime);
   }

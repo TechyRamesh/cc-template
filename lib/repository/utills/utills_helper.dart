@@ -4,12 +4,16 @@ import 'package:untitled/app/helper/extension_helper.dart';
 import 'package:untitled/repository/utills/utills_repository.dart';
 
 class UtillsRepositoryImpl extends UtillsRepository {
-  CollectionReference utillsCollection = FirebaseFirestore.instance.collection(AppCollectionConstants.utills);
+  CollectionReference utillsCollection = FirebaseFirestore.instance.collection(
+    AppCollectionConstants.utills,
+  );
 
   @override
   Future<Map<String, dynamic>?>? getUtillsData(String collectionName) async {
     try {
-      final DocumentSnapshot snapshot = await utillsCollection.doc(collectionName).get();
+      final DocumentSnapshot snapshot = await utillsCollection
+          .doc(collectionName)
+          .get();
       if (snapshot.exists && snapshot.data() != null) {
         return snapshot.data()! as Map<String, dynamic>;
       }

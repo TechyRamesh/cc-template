@@ -7,7 +7,7 @@ mixin AppAsset {
   static const String jsonPath = 'assets/json/';
   static const String animationPath = 'assets/animations/';
 
-//******************************** Image ********************************
+  //******************************** Image ********************************
   static const String appBackground = '${imagePath}app_background.png';
   static const String appIcon = '${imagePath}app_icon.png';
 }

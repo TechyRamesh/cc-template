@@ -21,7 +21,6 @@ class AppTextFormField extends StatelessWidget {
   final bool? isMaxLines;
   final TextInputAction? textInputAction;
 
-
   const AppTextFormField({
     super.key,
     this.hintText,
@@ -36,7 +35,7 @@ class AppTextFormField extends StatelessWidget {
     this.initialValue,
     this.inputFormatters,
     this.suffixIcon,
-    this.isMaxLines=false,
+    this.isMaxLines = false,
     this.textInputAction,
   });
 
@@ -50,7 +49,10 @@ class AppTextFormField extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColorConstant.appWhite,
             borderRadius: BorderRadius.circular(Dimens.borderRadiusMedium),
-            border: Border.all(color: borderColor ?? AppColorConstant.appTransparent, width: 2),
+            border: Border.all(
+              color: borderColor ?? AppColorConstant.appTransparent,
+              width: 2,
+            ),
           ),
           child: TextFormField(
             controller: controller,
@@ -59,21 +61,36 @@ class AppTextFormField extends StatelessWidget {
             inputFormatters: inputFormatters,
             onChanged: onChanged,
             obscureText: obscureText,
-            textInputAction: textInputAction??TextInputAction.done,
-            maxLines: isMaxLines==true ? null :1,
+            textInputAction: textInputAction ?? TextInputAction.done,
+            maxLines: isMaxLines == true ? null : 1,
             selectionControls: enableInteractiveSelection == false
                 ? DesktopTextSelectionControls()
                 : MaterialTextSelectionControls(),
             decoration: InputDecoration(
               hintText: hintText?.toLowerCase(),
               hintMaxLines: 1,
-              hintStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColorConstant.appGrey),
+              hintStyle: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: AppColorConstant.appGrey,
+              ),
               contentPadding: const EdgeInsets.all(DimensPadding.paddingMedium),
               border: InputBorder.none,
               suffixIcon: onSuffixPressed != null
                   ? IconButton(
                       onPressed: onSuffixPressed,
-                      icon: suffixIcon != null ? AppImageAsset(image: suffixIcon!, color: AppColorConstant.appGrey, height: Dimens.heightSmallMedium) : Icon(obscureText ? Icons.visibility_rounded : Icons.visibility_off_rounded, color: AppColorConstant.appGrey),
+                      icon: suffixIcon != null
+                          ? AppImageAsset(
+                              image: suffixIcon!,
+                              color: AppColorConstant.appGrey,
+                              height: Dimens.heightSmallMedium,
+                            )
+                          : Icon(
+                              obscureText
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded,
+                              color: AppColorConstant.appGrey,
+                            ),
                     )
                   : null,
             ),

@@ -13,15 +13,13 @@ class SplashScreenHelper {
   }
 
   Future<void> manageUser() async {
-    'FirebaseAuth.instance.currentUser --> ${FirebaseAuth.instance.currentUser?.uid}'.infoLogs();
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        if (FirebaseAuth.instance.currentUser?.uid != null) {
-        } else {
-          RouteHelper.instance.goToOnBoarding();
-        }
-      },
-    );
+    'FirebaseAuth.instance.currentUser --> ${FirebaseAuth.instance.currentUser?.uid}'
+        .infoLogs();
+    Future.delayed(const Duration(seconds: 2), () {
+      if (FirebaseAuth.instance.currentUser?.uid != null) {
+      } else {
+        RouteHelper.instance.goToOnBoarding();
+      }
+    });
   }
 }

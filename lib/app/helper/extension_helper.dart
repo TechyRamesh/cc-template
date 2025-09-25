@@ -61,7 +61,11 @@ extension SnackBar on String {
   }
 
   Future<void> launchStoreRating() async {
-    final Uri emailLaunchUri = Uri(scheme: 'mailto', path: this, queryParameters: {'subject': 'App Feedback'});
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: this,
+      queryParameters: {'subject': 'App Feedback'},
+    );
     try {
       await launchUrl(emailLaunchUri);
     } catch (e) {

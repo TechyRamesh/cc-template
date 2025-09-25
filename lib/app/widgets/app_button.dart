@@ -59,7 +59,9 @@ class AppButton extends StatelessWidget {
           color: color,
         ),
         child: Row(
-          mainAxisAlignment: suffixIcon == null ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: suffixIcon == null
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceBetween,
           children: [
             if (image != null) AppImageAsset(image: image ?? ''),
             Flexible(
@@ -73,10 +75,7 @@ class AppButton extends StatelessWidget {
               ),
             ),
             if (suffixIcon != null)
-              AppImageAsset(
-                image: suffixIcon ?? '',
-                color: fontColor,
-              ),
+              AppImageAsset(image: suffixIcon ?? '', color: fontColor),
           ],
         ),
       ),

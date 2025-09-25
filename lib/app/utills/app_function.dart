@@ -27,9 +27,19 @@ mixin AppFunction {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(child: AppButton(title: 'Camera', onTap: () => Get.back(result: ImageSource.camera))),
+                Expanded(
+                  child: AppButton(
+                    title: 'Camera',
+                    onTap: () => Get.back(result: ImageSource.camera),
+                  ),
+                ),
                 const SizedBox(width: Dimens.widthNormal),
-                Expanded(child: AppButton(title: 'Gallery', onTap: () => Get.back(result: ImageSource.gallery))),
+                Expanded(
+                  child: AppButton(
+                    title: 'Gallery',
+                    onTap: () => Get.back(result: ImageSource.gallery),
+                  ),
+                ),
               ],
             ),
           ],
@@ -39,7 +49,8 @@ mixin AppFunction {
 
     if (source != null) {
       if (source == ImageSource.gallery) {
-        final permissionGranted = await PermissionService.instance.requestStorageOrMediaPermission();
+        final permissionGranted = await PermissionService.instance
+            .requestStorageOrMediaPermission();
         'permissionGranted --> $permissionGranted'.infoLogs();
         if (!permissionGranted) {
           return null;
@@ -51,7 +62,8 @@ mixin AppFunction {
         }
       }
       if (source == ImageSource.camera) {
-        final permissionGranted = await PermissionService.instance.requestPermission(Permission.camera);
+        final permissionGranted = await PermissionService.instance
+            .requestPermission(Permission.camera);
         if (!permissionGranted) return null;
         final pickedFile = await ImagePicker().pickImage(source: source);
         if (pickedFile != null) {
@@ -68,7 +80,11 @@ mixin AppFunction {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const AppText(StringConstant.exitAppDescription, fontSize: Dimens.size20, textAlign: TextAlign.center),
+            const AppText(
+              StringConstant.exitAppDescription,
+              fontSize: Dimens.size20,
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: Dimens.heightSmallMedium),
             Row(
               children: [
@@ -100,13 +116,26 @@ mixin AppFunction {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const AppText(StringConstant.permissionDescription, fontSize: Dimens.size20, textAlign: TextAlign.center),
+            const AppText(
+              StringConstant.permissionDescription,
+              fontSize: Dimens.size20,
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: Dimens.heightXSmall),
-            const AppText(StringConstant.permissionSubDescription, fontSize: Dimens.size20, textAlign: TextAlign.center),
+            const AppText(
+              StringConstant.permissionSubDescription,
+              fontSize: Dimens.size20,
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: Dimens.heightExtraMedium),
             Row(
               children: [
-                Expanded(child: AppButton(title: StringConstant.notNow, onTap: () => Get.back())),
+                Expanded(
+                  child: AppButton(
+                    title: StringConstant.notNow,
+                    onTap: () => Get.back(),
+                  ),
+                ),
                 const SizedBox(width: Dimens.heightSmall),
                 Expanded(
                   child: AppButton(

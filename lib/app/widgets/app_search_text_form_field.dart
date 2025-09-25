@@ -38,7 +38,8 @@ class AppSearchTextFormField extends StatelessWidget {
     this.fieldHeight,
     this.onTap,
     // required this.onSuggestionSelected,
-    required this.suggestionsCallback, this.inputFormatters,
+    required this.suggestionsCallback,
+    this.inputFormatters,
   });
 
   @override

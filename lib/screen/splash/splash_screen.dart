@@ -22,7 +22,13 @@ class SplashScreenState extends State<SplashScreen> {
     splashScreenHelper ??= SplashScreenHelper(this);
     return const Scaffold(
       body: AppBackground(
-        child: Center(child: AppImageAsset(image: AppAsset.appBackground, height: Dimens.heightHuge, width: Dimens.heightHuge)),
+        child: Center(
+          child: AppImageAsset(
+            image: AppAsset.appBackground,
+            height: Dimens.heightHuge,
+            width: Dimens.heightHuge,
+          ),
+        ),
       ),
     );
   }

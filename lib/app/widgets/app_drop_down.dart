@@ -42,16 +42,23 @@ class AppDropdown<T> extends StatelessWidget {
               ),
             ),
             hint: Padding(
-              padding: const EdgeInsets.only(left: DimensPadding.paddingSmallNormal),
-              child: Text(hint, style: const TextStyle(color: AppColorConstant.appGrey)),
+              padding: const EdgeInsets.only(
+                left: DimensPadding.paddingSmallNormal,
+              ),
+              child: Text(
+                hint,
+                style: const TextStyle(color: AppColorConstant.appGrey),
+              ),
             ),
             underline: const SizedBox(),
             items: items.map((T value) {
               return DropdownMenuItem<T>(
                 value: value,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: DimensPadding.paddingSmallNormal),
-                  child: AppText(value.toString().toLowerCase(),height: 1),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: DimensPadding.paddingSmallNormal,
+                  ),
+                  child: AppText(value.toString().toLowerCase(), height: 1),
                 ),
               );
             }).toList(),

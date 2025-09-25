@@ -25,12 +25,19 @@ class RestServices {
 
   Map<String, String> headers = {'Content-Type': 'application/json'};
 
-  void showRequestAndResponseLogs(http.Response? response, Map<String, Object> requestData) {
+  void showRequestAndResponseLogs(
+    http.Response? response,
+    Map<String, Object> requestData,
+  ) {
     '•••••••••• Network logs ••••••••••\nRequest code --> ${response?.statusCode} : ${response?.request?.url}\nRequest headers --> $requestData\nResponse headers --> ${response?.headers}\nResponse body --> ${response?.body}\n••••••••••••••••••••••••••••••••••'
         .infoLogs();
   }
 
-  Future<String?>? getRestCall({required String? endpoint, String? addOns, bool addToken = true}) async {
+  Future<String?>? getRestCall({
+    required String? endpoint,
+    String? addOns,
+    bool addToken = true,
+  }) async {
     String? responseData;
     final bool connected = await ConnectivityService.instance.checkConnection();
     if (!connected) {
@@ -69,7 +76,11 @@ class RestServices {
     return responseData;
   }
 
-  Future<String?>? postRestCall({required String? endpoint, Map<String, dynamic>? body, String? addOns}) async {
+  Future<String?>? postRestCall({
+    required String? endpoint,
+    Map<String, dynamic>? body,
+    String? addOns,
+  }) async {
     String? responseData;
     final bool connected = await ConnectivityService.instance.checkConnection();
     if (!connected) {
@@ -83,7 +94,11 @@ class RestServices {
 
       headers['Content-Type'] = 'application/json';
 
-      final Response response = await http.post(requestedUri!, headers: headers, body: jsonEncode(body));
+      final Response response = await http.post(
+        requestedUri!,
+        headers: headers,
+        body: jsonEncode(body),
+      );
       'response --> ${response.body}'.infoLogs();
 
       showRequestAndResponseLogs(response, headers);
@@ -103,7 +118,8 @@ class RestServices {
         case 503:
           '${response.statusCode}'.warningLogs();
         default:
-          'Response --> ${response.statusCode} : ${response.body}'.warningLogs();
+          'Response --> ${response.statusCode} : ${response.body}'
+              .warningLogs();
       }
     } on PlatformException catch (e) {
       'PlatformException in postRestCall --> ${e.message}'.errorLogs();

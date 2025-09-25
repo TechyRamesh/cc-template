@@ -43,7 +43,6 @@ class Dimens {
   static const double widthMedium = 60.0;
   static const double widthLarge = 80.0;
   static const double widthXLarge = 120.0;
-
 }
 
 class DimensPadding {
@@ -61,5 +60,4 @@ class DimensPadding {
   static const double paddingExtraLarge = 30.0;
   static const double paddingExtraLargeX = 40.0;
   static const double paddingExtraLargeXL = 50.0;
-
 }

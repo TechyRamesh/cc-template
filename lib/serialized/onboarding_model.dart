@@ -16,9 +16,15 @@ class OnBoardingModel {
   @JsonKey(name: 'isShow')
   final bool isShow;
 
-  OnBoardingModel({this.image, this.headerLine, this.subHeaderLine, this.isShow = false});
+  OnBoardingModel({
+    this.image,
+    this.headerLine,
+    this.subHeaderLine,
+    this.isShow = false,
+  });
 
-  factory OnBoardingModel.fromJson(Map<String, dynamic> json) => _$OnBoardingModelFromJson(json);
+  factory OnBoardingModel.fromJson(Map<String, dynamic> json) =>
+      _$OnBoardingModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$OnBoardingModelToJson(this);
 }

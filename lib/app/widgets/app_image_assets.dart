@@ -34,20 +34,45 @@ class AppImageAsset extends StatelessWidget {
       return CachedNetworkImage(
         imageUrl: image,
         cacheKey: image,
-        placeholder: (context, url) => AppShimmerEffectView(height: height, width: width),
-        errorWidget: (context, url, error) => const Center(child: AppImageAsset(image: AppAsset.appIcon, height: Dimens.dragonCustomHeight, width:Dimens.dragonCustomHeight)),
+        placeholder: (context, url) =>
+            AppShimmerEffectView(height: height, width: width),
+        errorWidget: (context, url, error) => const Center(
+          child: AppImageAsset(
+            image: AppAsset.appIcon,
+            height: Dimens.dragonCustomHeight,
+            width: Dimens.dragonCustomHeight,
+          ),
+        ),
         height: height,
         width: width,
         fit: fit ?? BoxFit.cover,
       );
     } else if (isFile) {
-      return Image.file(File(image), height: height, width: width, color: color, fit: fit);
+      return Image.file(
+        File(image),
+        height: height,
+        width: width,
+        color: color,
+        fit: fit,
+      );
     } else if (image.contains('.json')) {
       return Lottie.asset(image, height: height, width: width);
     } else if (image.split('.').last != 'svg') {
-      return Image.asset(image, fit: fit, height: height, width: width, color: color);
+      return Image.asset(
+        image,
+        fit: fit,
+        height: height,
+        width: width,
+        color: color,
+      );
     } else {
-      return SvgPicture.asset(image, height: height, width: width, color: color, fit: fit ?? BoxFit.contain);
+      return SvgPicture.asset(
+        image,
+        height: height,
+        width: width,
+        color: color,
+        fit: fit ?? BoxFit.contain,
+      );
     }
   }
 }

@@ -16,7 +16,9 @@ class PermissionService {
     if (await isAndroid13orAbove()) {
       return await requestPermission(Permission.videos);
     } else {
-      return await requestPermission(Platform.isIOS ? Permission.photos : Permission.storage);
+      return await requestPermission(
+        Platform.isIOS ? Permission.photos : Permission.storage,
+      );
     }
   }
 
@@ -36,9 +38,10 @@ class PermissionService {
     'Permission status $permission --> $status'.infoLogs();
     if (status == PermissionStatus.granted) {
       return true;
-      } else if (status == PermissionStatus.denied || status == PermissionStatus.permanentlyDenied) {
-        await AppFunction.showPermissionDialog();
-        return false;
+    } else if (status == PermissionStatus.denied ||
+        status == PermissionStatus.permanentlyDenied) {
+      await AppFunction.showPermissionDialog();
+      return false;
     }
     return false;
   }

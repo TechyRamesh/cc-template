@@ -15,7 +15,6 @@ mixin AppColorConstant {
   static const Color appRed = Color(0xffF88379);
   static const Color appExtraLightGrey = Color(0xffadafbb);
 
-
   static Color hex(String hexString) {
     final buffer = StringBuffer();
     if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
@@ -39,6 +38,4 @@ mixin AppColorConstant {
       offset: const Offset(0, 8),
     ),
   ];
-
-
 }

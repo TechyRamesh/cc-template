@@ -42,11 +42,13 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       onboardingScreenHelper?.onboardingData.length ?? 0,
                       (index) => buildOnboardingPage(index),
                     ),
-                    carouselController: onboardingScreenHelper?.carouselController,
+                    carouselController:
+                        onboardingScreenHelper?.carouselController,
                     options: CarouselOptions(
                       height: MediaQuery.of(context).size.height * 0.7,
                       autoPlayInterval: const Duration(seconds: 3),
-                      onPageChanged: (index, reason) => onboardingScreenHelper?.manageCurrentPage(index),
+                      onPageChanged: (index, reason) =>
+                          onboardingScreenHelper?.manageCurrentPage(index),
                       viewportFraction: 1.0,
                       enableInfiniteScroll: false,
                     ),
@@ -58,7 +60,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                   title: StringConstant.createAccount,
                   color: AppColorConstant.appWhite,
                   fontColor: AppColorConstant.appBlack,
-                  margin: EdgeInsets.symmetric(horizontal: DimensPadding.paddingExtraSemiLarge),
+                  margin: EdgeInsets.symmetric(
+                    horizontal: DimensPadding.paddingExtraSemiLarge,
+                  ),
                 ),
                 const SizedBox(height: Dimens.heightNormal),
                 buildLoginText(),
@@ -98,7 +102,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   Widget buildOnboardingPage(int index) {
     final OnBoardingModel? data = onboardingScreenHelper?.onboardingData[index];
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DimensPadding.paddingExtraSemiLarge),
+      padding: const EdgeInsets.symmetric(
+        horizontal: DimensPadding.paddingExtraSemiLarge,
+      ),
       child: Column(
         children: [
           ClipRRect(
@@ -112,7 +118,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
           ),
           const SizedBox(height: Dimens.heightSmallMedium),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: DimensPadding.paddingNormal),
+            padding: const EdgeInsets.symmetric(
+              horizontal: DimensPadding.paddingNormal,
+            ),
             child: AppText(
               data?.headerLine ?? '',
               fontWeight: FontWeight.w800,
@@ -123,7 +131,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
           ),
           const SizedBox(height: Dimens.heightNormal),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: DimensPadding.paddingNormal),
+            padding: const EdgeInsets.symmetric(
+              horizontal: DimensPadding.paddingNormal,
+            ),
             child: AppText(
               data?.subHeaderLine ?? '',
               fontWeight: FontWeight.w400,
@@ -148,7 +158,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
             height: 8,
             width: 8,
             decoration: BoxDecoration(
-              color: onboardingScreenHelper?.currentPage == index ? AppColorConstant.appWhite : AppColorConstant.appBlack,
+              color: onboardingScreenHelper?.currentPage == index
+                  ? AppColorConstant.appWhite
+                  : AppColorConstant.appBlack,
               borderRadius: BorderRadius.circular(5),
             ),
           );

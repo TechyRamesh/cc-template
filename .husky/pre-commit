@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running Flutter pre-commit checks..."
+
+# Check if Flutter is available
+if ! command -v flutter &> /dev/null; then
+    echo "❌ Flutter is not installed or not in PATH"
+    exit 1
+fi
+
+# Format check
+echo "📝 Checking code formatting..."
+if ! dart format --set-exit-if-changed .; then
+    echo "❌ Code formatting issues found. Please run 'dart format .' to fix them."
+    exit 1
+fi
+
+# Analysis check
+echo "🔍 Running static analysis..."
+if ! flutter analyze; then
+    echo "❌ Static analysis issues found. Please fix them before committing."
+    exit 1
+fi
+
+# Test check (optional - uncomment if you want to run tests on every commit)
+# echo "🧪 Running tests..."
+# if ! flutter test; then
+#     echo "❌ Tests failed. Please fix them before committing."
+#     exit 1
+# fi
+
+echo "✅ All pre-commit checks passed!"

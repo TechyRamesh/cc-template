@@ -13,8 +13,9 @@ This project is a Flutter application designed to [briefly describe the purpose 
 ### Prerequisites
 - Flutter SDK: `v3.32.8`
 - Dart Version: `3.8.1`
+- Node.js: `v16.x` or higher (for Husky Git hooks)
 
-Make sure you have Flutter and Dart set up on your machine before you proceed with the setup. You can install Flutter from [flutter.dev](https://flutter.dev/docs/get-started/install).
+Make sure you have Flutter, Dart, and Node.js set up on your machine before you proceed with the setup. You can install Flutter from [flutter.dev](https://flutter.dev/docs/get-started/install) and Node.js from [nodejs.org](https://nodejs.org/).
 
 ### Run the Project
 
@@ -43,7 +44,17 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     flutter pub get
     ```
 
-4. **Generate Code for JSON Serialization**:
+4. **Setup Git Hooks (Husky)**:
+   This project uses Husky for Git hooks to ensure code quality. Install Node.js dependencies and setup hooks:
+    ```bash
+    npm install
+    ```
+   This will automatically setup the following Git hooks:
+   - **pre-commit**: Runs code formatting and static analysis
+   - **commit-msg**: Validates commit message format (conventional commits)
+   - **pre-push**: Runs tests before pushing to remote
+
+5. **Generate Code for JSON Serialization**:
    Since this project uses JSON serialization (via `json_serializable` package), you need to run the `build_runner` command to generate code for your models.
 
    Run this command to generate the necessary code:
@@ -56,7 +67,7 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     dart run build_runner watch
     ```
 
-5. **Remove Firebase (If Applicable)**:
+6. **Remove Firebase (If Applicable)**:
    Since this project uses firebase, if don't need it, you can remove it using following command.
 
    Run this command to make shell script executable:
@@ -69,7 +80,7 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     ./remove_firebase.sh
     ```
 
-6. **Run the App**:
+7. **Run the App**:
    To run the app on an emulator or connected device:
     ```bash
     flutter run
@@ -89,6 +100,46 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     flutter build ios --release
     ```
 
+## Git Hooks & Code Quality
+
+This project uses **Husky** to enforce code quality through Git hooks:
+
+### Available Git Hooks:
+- **pre-commit**: Automatically formats code and runs static analysis
+- **commit-msg**: Validates commit messages follow conventional commits format
+- **pre-push**: Runs tests before pushing to remote repository
+
+### NPM Scripts:
+You can use these convenient npm scripts for common Flutter tasks:
+
+```bash
+# Code formatting and analysis
+npm run format          # Format all Dart files
+npm run analyze         # Run static analysis
+npm run test           # Run tests
+
+# Build commands
+npm run build:android  # Build Android APK
+npm run build:ios     # Build iOS app
+
+# Development utilities
+npm run clean          # Clean and get dependencies
+npm run deps:update    # Update dependencies
+npm run deps:get       # Get dependencies
+npm run codegen        # Generate code (JSON serialization)
+```
+
+### Commit Message Format:
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) format:
+```
+<type>(<scope>): <description>
+
+Examples:
+feat(auth): add login functionality
+fix(ui): resolve button alignment issue
+docs(readme): update setup instructions
+```
+
 ## Notes
 - Ensure that you have the appropriate development environment set up for Android or iOS.
 - For further instructions on how to configure your device or emulator, refer to [Flutter Installation Guide](https://flutter.dev/docs/get-started/install).
@@ -96,3 +147,4 @@ Make sure you have Flutter and Dart set up on your machine before you proceed wi
     ```bash
     dart run build_runner clean
     ```
+- Git hooks will automatically run when you commit or push code. Make sure your code passes all checks before committing.
