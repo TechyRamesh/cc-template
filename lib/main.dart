@@ -101,3 +101,4 @@ class MyApp extends StatelessWidget {
 }
 
 // Test comment
+// Test comment for commit message validation

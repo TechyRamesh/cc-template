@@ -105,9 +105,16 @@ Make sure you have Flutter, Dart, and Node.js set up on your machine before you 
 This project uses **Husky** to enforce code quality through Git hooks:
 
 ### Available Git Hooks:
-- **pre-commit**: Automatically formats code and runs static analysis
+- **pre-commit**: 
+  - Automatically formats staged Dart files and re-stages them
+  - Runs static analysis (per-file if supported, otherwise full analysis)
+  - Safely handles filenames with spaces and special characters
+  - Provides clear error messages and exits on failures
 - **commit-msg**: Validates commit messages follow conventional commits format
-- **pre-push**: Runs tests before pushing to remote repository
+- **pre-push**: 
+  - Runs comprehensive static analysis before pushing
+  - Detects Flutter repositories automatically
+  - Optional Flutter analyzer for additional safety
 
 ### NPM Scripts:
 You can use these convenient npm scripts for common Flutter tasks:
@@ -148,3 +155,12 @@ docs(readme): update setup instructions
     dart run build_runner clean
     ```
 - Git hooks will automatically run when you commit or push code. Make sure your code passes all checks before committing.
+
+### Enhanced Hook Features:
+- **Smart File Detection**: Only processes staged Dart files for efficiency
+- **Auto-formatting**: Automatically formats code and re-stages formatted files
+- **Robust Error Handling**: Clear error messages and proper exit codes
+- **Flutter Detection**: Automatically detects Flutter projects and applies appropriate checks
+- **Safe Filename Handling**: Properly handles files with spaces and special characters
+- **Per-file Analysis**: Uses per-file analysis when supported by Dart SDK
+- **Comprehensive Logging**: Detailed output showing what's being processed
