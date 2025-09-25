@@ -11,8 +11,8 @@ This project is a Flutter application designed to [briefly describe the purpose 
 ## Development Setup
 
 ### Prerequisites
-- Flutter SDK: `v3.x.x`
-- Dart Version: `2.x.x`
+- Flutter SDK: `v3.32.8`
+- Dart Version: `3.8.1`
 
 Make sure you have Flutter and Dart set up on your machine before you proceed with the setup. You can install Flutter from [flutter.dev](https://flutter.dev/docs/get-started/install).
 
