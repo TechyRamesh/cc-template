@@ -39,3 +39,4 @@ mixin AppColorConstant {
     ),
   ];
 }
+// Demo: Let's see how the pre-commit hook works
