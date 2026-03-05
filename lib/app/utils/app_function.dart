@@ -8,7 +8,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:untitled/app/constant/color_constant.dart';
 import 'package:untitled/app/constant/string_constant.dart';
 import 'package:untitled/app/helper/extension_helper.dart';
-import 'package:untitled/app/utills/dimension.dart';
+import 'package:untitled/app/utils/dimension.dart';
 import 'package:untitled/app/widgets/app_button.dart';
 import 'package:untitled/app/widgets/app_text.dart';
 import 'package:untitled/service/permission_service.dart';

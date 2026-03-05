@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:untitled/app/constant/color_constant.dart';
 import 'package:untitled/app/constant/string_constant.dart';
 import 'package:untitled/app/helper/extension_helper.dart';
-import 'package:untitled/app/utills/dimension.dart';
+import 'package:untitled/app/utils/dimension.dart';
 import 'package:untitled/app/widgets/app_background.dart';
 import 'package:untitled/app/widgets/app_button.dart';
 import 'package:untitled/app/widgets/app_image_assets.dart';
@@ -100,7 +100,8 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget buildOnboardingPage(int index) {
-    final OnBoardingModel? data = onboardingScreenHelper?.onboardingData[index];
+    final OnBoardingModel? data =
+        onboardingScreenHelper?.onboardingData[index];
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: DimensPadding.paddingExtraSemiLarge,

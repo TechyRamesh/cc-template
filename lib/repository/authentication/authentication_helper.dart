@@ -21,10 +21,10 @@ class AuthRepositoryImpl extends AuthRepository {
       }
     } on FirebaseAuthException catch (e) {
       'Catch FirebaseAuthException in logIn --> ${e.message}'.errorLogs();
-      e.message?.showSuccess();
+      e.message?.showError();
     } on SocketException catch (e) {
       'Catch SocketException in logIn --> ${e.message}'.errorLogs();
-      e.message.showSuccess();
+      e.message.showError();
     }
     return null;
   }
@@ -69,9 +69,11 @@ class AuthRepositoryImpl extends AuthRepository {
     } on FirebaseAuthException catch (e) {
       'Catch FirebaseAuthException in sendPasswordOnEmail --> ${e.message}'
           .errorLogs();
+      e.message?.showError();
     } on SocketException catch (e) {
       'Catch SocketException in sendPasswordOnEmail --> ${e.message}'
           .errorLogs();
+      e.message.showError();
     }
     return false;
   }
@@ -115,10 +117,10 @@ class AuthRepositoryImpl extends AuthRepository {
     } on FirebaseException catch (e) {
       'Catch FirebaseException in uploadToFirebase --> ${e.message}'
           .errorLogs();
-      e.message?.showSuccess();
+      e.message?.showError();
     } on SocketException catch (e) {
       'Catch SocketException in uploadToFirebase --> ${e.message}'.errorLogs();
-      e.message.showSuccess();
+      e.message.showError();
     }
     return null;
   }

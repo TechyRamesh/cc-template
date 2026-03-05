@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/app/constant/app_asset.dart';
 import 'package:untitled/app/helper/extension_helper.dart';
-import 'package:untitled/app/utills/dimension.dart';
+import 'package:untitled/app/utils/dimension.dart';
 import 'package:untitled/app/widgets/app_background.dart';
 import 'package:untitled/app/widgets/app_image_assets.dart';
 import 'package:untitled/screen/splash/splash_helper.dart';

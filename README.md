@@ -1,7 +1,75 @@
-# Project Name
+# Flutter Template - GetX + Dependency Injection
 
-## Project Details
-This project is a Flutter application designed to [briefly describe the purpose of your project]. It aims to [mention the main goal or feature].
+## Project Overview
+This is a **Flutter template** with a clean 3-tier architecture using:
+- **GetX** for state management and routing
+- **GetIt** (via `AppInjector`) for dependency injection
+- **Firebase** integration (Auth, Firestore, Storage, Remote Config)
+- **Repository pattern** for data layer abstraction
+
+## Architecture
+
+### 3-Tier Structure
+```
+┌─────────────────────────────────────┐
+│   Presentation Layer                │
+│   - Screens (UI)                    │
+│   - Controllers (GetX)              │
+│   - Screen Helpers (Business Logic)│
+└─────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────┐
+│   Domain/Business Layer            │
+│   - Repository Interfaces           │
+│   - Repository Implementations      │
+└─────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────┐
+│   Data Layer                        │
+│   - Firebase Services               │
+│   - REST API (RestServices)         │
+│   - Local Storage                   │
+└─────────────────────────────────────┘
+```
+
+### Key Components
+
+- **Dependency Injection**: Centralized via `AppInjector` (no global variables)
+  - Location: `lib/app/di/injector.dart`
+  - Register dependencies: `AppInjector.registerAll()` in `main.dart`
+  - Resolve: `AppInjector.get<RepositoryType>()`
+
+- **State Management**: GetX Controllers
+  - Controllers extend `GetxController`
+  - Use `GetBuilder` for reactive UI updates
+  - Screen helpers contain business logic
+
+- **Repository Pattern**: Abstract interfaces with implementations
+  - `AuthRepository` / `AuthRepositoryImpl`
+  - `UtilsRepository` / `UtilsRepositoryImpl`
+
+## Project Structure
+
+```
+lib/
+├── app/
+│   ├── config/              # App configuration (e.g., feedback strip toggle)
+│   ├── constant/            # App constants (colors, strings, enums)
+│   ├── di/                  # Dependency injection (AppInjector)
+│   ├── helper/              # Helper utilities (extensions, REST, validation)
+│   ├── routes/              # Route definitions and navigation helpers
+│   ├── utils/               # Utility functions (dimensions, date utils, app functions)
+│   └── widgets/             # Reusable UI widgets
+├── controller/              # GetX controllers for state management
+├── repository/              # Repository interfaces and implementations
+│   ├── authentication/      # Auth repository
+│   └── utils/              # Utils repository (Firestore utilities)
+├── screen/                  # UI screens
+│   ├── onboarding/         # Onboarding screen + helper
+│   └── splash/              # Splash screen + helper
+├── serialized/              # Data models (JSON serializable)
+└── service/                 # Services (connectivity, permissions)
+```
 
 ## Links
 - **GitHub Repository**: [GitHub Repo URL](https://github.com/your-username/your-repo)
@@ -11,8 +79,8 @@ This project is a Flutter application designed to [briefly describe the purpose 
 ## Development Setup
 
 ### Prerequisites
-- Flutter SDK: `v3.32.8`
-- Dart Version: `3.8.1`
+- Flutter SDK: `>=3.8.1 <4.0.0` (latest 3.x)
+- Dart Version: `>=3.8.1 <4.0.0`
 - Node.js: `v16.x` or higher (for Husky Git hooks)
 
 Make sure you have Flutter, Dart, and Node.js set up on your machine before you proceed with the setup. You can install Flutter from [flutter.dev](https://flutter.dev/docs/get-started/install) and Node.js from [nodejs.org](https://nodejs.org/).
@@ -147,6 +215,112 @@ fix(ui): resolve button alignment issue
 docs(readme): update setup instructions
 ```
 
+## Key Features & Improvements
+
+### ✅ Dependency Injection
+- **No global variables**: All DI handled via `AppInjector` class
+- **Centralized registration**: All repositories registered in `AppInjector.registerAll()`
+- **Type-safe resolution**: `AppInjector.get<RepositoryType>()`
+- **Test-friendly**: Easy to mock dependencies for testing
+
+### ✅ Clean Architecture
+- **Separation of concerns**: Presentation, Domain, and Data layers clearly separated
+- **Repository pattern**: Abstract interfaces with concrete implementations
+- **Screen helpers**: Business logic contained in helper classes, not in widgets
+
+### ✅ State Management
+- **GetX controllers**: Lightweight controllers for state management
+- **Reactive updates**: `GetBuilder` for efficient UI rebuilds
+- **Lifecycle aware**: Controllers follow GetX lifecycle (onInit, onReady, onClose)
+
+### ✅ Code Quality
+- **Consistent naming**: Utils (not Utills) throughout the codebase
+- **Error handling**: Proper error snackbars (`showError()` for errors, `showSuccess()` for success)
+- **Logging**: Structured logging with different levels (info, error, warning, trace)
+
+### ✅ Template Features
+- **Optional feedback strip**: Toggle via `AppConfig.showFeedbackStrip`
+- **Firebase integration**: Auth, Firestore, Storage, Remote Config ready
+- **REST API support**: `RestServices` class for HTTP calls with connectivity checks
+- **Reusable widgets**: Common UI components in `app/widgets/`
+
+## Usage Examples
+
+### Adding a New Repository
+
+1. Create abstract interface:
+```dart
+// lib/repository/user/user_repository.dart
+abstract class UserRepository {
+  Future<User?> getUser(String userId);
+}
+```
+
+2. Create implementation:
+```dart
+// lib/repository/user/user_repository_impl.dart
+class UserRepositoryImpl extends UserRepository {
+  @override
+  Future<User?> getUser(String userId) async {
+    // Implementation
+  }
+}
+```
+
+3. Register in `AppInjector`:
+```dart
+// lib/app/di/injector.dart
+static Future<void> registerAll() async {
+  // ... existing registrations
+  _instance.registerSingleton<UserRepository>(UserRepositoryImpl());
+}
+```
+
+4. Use in controller or helper:
+```dart
+final userRepository = AppInjector.get<UserRepository>();
+```
+
+### Creating a New Screen with Controller
+
+1. Create controller:
+```dart
+// lib/controller/profile_controller.dart
+class ProfileController extends GetxController {
+  // State and methods
+}
+```
+
+2. Create screen helper (if needed):
+```dart
+// lib/screen/profile/profile_helper.dart
+class ProfileScreenHelper {
+  ProfileScreenHelper(this.state);
+  final ProfileScreenState state;
+  // Business logic here
+}
+```
+
+3. Create screen:
+```dart
+// lib/screen/profile/profile_screen.dart
+GetBuilder(
+  init: ProfileController(),
+  builder: (ProfileController controller) {
+    return Scaffold(/* UI */);
+  },
+)
+```
+
+4. Add route:
+```dart
+// lib/app/routes/route_constant.dart
+GetPage(
+  name: RouteConstant.profile,
+  page: () => const ProfileScreen(),
+),
+```
+
 ## Notes
 - Ensure that you have the appropriate development environment set up for Android or iOS.
 - For further instructions on how to configure your device or emulator, refer to [Flutter Installation Guide](https://flutter.dev/docs/get-started/install).
@@ -155,6 +329,7 @@ docs(readme): update setup instructions
     dart run build_runner clean
     ```
 - Git hooks will automatically run when you commit or push code. Make sure your code passes all checks before committing.
+- **Firestore Collection Names**: The template uses `'utils'` as the Firestore collection name. If your existing data uses `'utills'`, update `AppCollectionConstants.utils` in `lib/app/constant/string_constant.dart` accordingly.
 
 ### Enhanced Hook Features:
 - **Smart File Detection**: Only processes staged Dart files for efficiency

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:untitled/app/constant/app_asset.dart';
-import 'package:untitled/app/utills/dimension.dart';
+import 'package:untitled/app/utils/dimension.dart';
 import 'package:untitled/app/widgets/app_shimmer.dart';
 
 class AppImageAsset extends StatelessWidget {

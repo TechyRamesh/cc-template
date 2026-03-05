@@ -1,24 +1,24 @@
-import 'dart:async';
-
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:untitled/app/di/injector.dart';
 import 'package:untitled/app/helper/extension_helper.dart';
+import 'package:untitled/repository/utils/utils_repository.dart';
 import 'package:untitled/screen/onboarding/onboarding_screen.dart';
 import 'package:untitled/serialized/onboarding_model.dart';
 
 class OnBoardingScreenHelper {
-  OnboardingScreenState state;
-  List<OnBoardingModel> onboardingData = [];
-  CarouselSliderController carouselController = CarouselSliderController();
-  int currentPage = 0;
-  Timer? autoSlideTimer;
-
   OnBoardingScreenHelper(this.state) {
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       await getOnboardingData();
       updateState();
     });
   }
+
+  final OnboardingScreenState state;
+
+  final List<OnBoardingModel> onboardingData = [];
+  final CarouselSliderController carouselController = CarouselSliderController();
+  int currentPage = 0;
 
   void updateState() => state.onboardingController?.update();
 
@@ -28,15 +28,16 @@ class OnBoardingScreenHelper {
   }
 
   Future<void> getOnboardingData() async {
-    final Map<String, dynamic>? utillsData = await state
-        .onboardingController
-        ?.utillsRepository
-        .getUtillsData('onboarding');
-    if (utillsData != null && utillsData.containsKey('onSliders')) {
-      'utillsData --> $utillsData'.logs();
-      onboardingData = (utillsData['onSliders'] as List)
-          .map((e) => OnBoardingModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+    final UtilsRepository utilsRepository = AppInjector.get<UtilsRepository>();
+    final Map<String, dynamic>? data =
+        await utilsRepository.getUtilsData('onboarding');
+    if (data != null && data.containsKey('onSliders')) {
+      'utilsData --> $data'.logs();
+      onboardingData.clear();
+      onboardingData.addAll(
+        (data['onSliders'] as List)
+            .map((e) => OnBoardingModel.fromJson(e as Map<String, dynamic>)),
+      );
     }
   }
 }

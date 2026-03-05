@@ -2,27 +2,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get_it/get_it.dart';
+import 'package:untitled/app/config/app_config.dart';
 import 'package:untitled/app/constant/color_constant.dart';
+import 'package:untitled/app/di/injector.dart';
 import 'package:untitled/app/helper/extension_helper.dart';
 import 'package:untitled/app/routes/route_constant.dart';
 import 'package:untitled/app/widgets/app_text.dart';
-import 'package:untitled/repository/authentication/auth_repository.dart';
-import 'package:untitled/repository/authentication/authentication_helper.dart';
-import 'package:untitled/repository/utills/utills_helper.dart';
-import 'package:untitled/repository/utills/utills_repository.dart';
-
-final GetIt getIt = GetIt.instance;
-
-Future<void> init() async {
-  getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());
-  getIt.registerSingleton<UtillsRepository>(UtillsRepositoryImpl());
-}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await init();
+  await AppInjector.registerAll();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -57,48 +47,46 @@ class MyApp extends StatelessWidget {
                 defaultTransition: Transition.fadeIn,
                 builder: (context, child) {
                   return MediaQuery(
-                    data: MediaQuery.of(
-                      context,
-                    ).copyWith(textScaler: TextScaler.noScaling),
+                    data: MediaQuery.of(context)
+                        .copyWith(textScaler: TextScaler.noScaling),
                     child: child ?? const SizedBox(),
                   );
                 },
               ),
             ),
-            InkWell(
-              onTap: () => "stackapp.solution@gmail.com".launchStoreRating(),
-              child: Container(
-                height: 120,
-                width: 30,
-                decoration: const BoxDecoration(
-                  color: AppColorConstant.appBlack,
-                ),
-                child: const Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 3),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RotatedBox(
-                          quarterTurns: -1,
-                          child: AppText(
-                            'Feedback',
-                            color: AppColorConstant.appWhite,
-                            fontWeight: FontWeight.bold,
+            if (AppConfig.showFeedbackStrip)
+              InkWell(
+                onTap: () =>
+                    AppConfig.feedbackEmail.launchStoreRating(),
+                child: Container(
+                  height: 120,
+                  width: 30,
+                  decoration: const BoxDecoration(
+                    color: AppColorConstant.appBlack,
+                  ),
+                  child: const Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 3),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RotatedBox(
+                            quarterTurns: -1,
+                            child: AppText(
+                              'Feedback',
+                              color: AppColorConstant.appWhite,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),
     );
   }
 }
-
-// Test comment
-// Test comment for commit message validation

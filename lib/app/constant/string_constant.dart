@@ -1,5 +1,5 @@
 class AppCollectionConstants {
-  static const String utills = 'utills';
+  static const String utils = 'utils';
 }
 
 class AppConstants {

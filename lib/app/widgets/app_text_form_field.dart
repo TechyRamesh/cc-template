@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:untitled/app/constant/color_constant.dart';
-import 'package:untitled/app/utills/dimension.dart';
+import 'package:untitled/app/utils/dimension.dart';
 import 'package:untitled/app/widgets/app_image_assets.dart';
 import 'package:untitled/app/widgets/app_text.dart';
 
